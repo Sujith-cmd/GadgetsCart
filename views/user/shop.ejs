@@ -289,7 +289,7 @@
             $("#price-range").slider({
                 range: true, // Enables the two-way range slider
                 min: 0,
-                max: 200,
+                max: 200000,
                 values: ["<%= minamount %>", "<%= maxamount %>"], // Set default slider range
                 slide: function (event, ui) {
                     $("#minamount").val(ui.values[0]);
