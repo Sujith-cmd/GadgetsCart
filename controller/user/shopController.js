@@ -16,7 +16,7 @@ const loadShop = async (req, res) => {
     }
 
     let minamount = 0;
-    let maxamount = 200;
+    let maxamount = 90000;
 
     if (req.query.minamount || req.query.maxamount) {
       minamount = parseInt(req.query.minamount);
