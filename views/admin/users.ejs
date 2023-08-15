@@ -1,0 +1,70 @@
+<%- include('./partials/header.ejs') %>
+
+    <div class="container-fluid d-flex gap-4" style="background-color: #EDF1F5;">
+        
+        <%- include('./partials/sidebar.ejs') %>
+
+        <div style="overflow-y: auto;" class="w-100 d-flex align-items-center align-items-center">
+            
+            <div class="table">
+                <table id="dtBasicExample" class="table table-light table-striped table-responsive" >
+                    <thead>
+    
+                        <tr>
+                            <th>sl.no</th>
+                            <th>Name</th>
+                            <th>Contact</th>
+                            <th>Status</th>
+                            <th>Edit</th>
+                        </tr>
+                        
+                    </thead>
+    
+                    <tbody id="tableVa">
+    
+                        <% users.forEach((user,i)=>{ %>
+                            <tr>
+                                <td><%= i+1 %></td>
+                                <td><%= user.username %></td>
+                                <td><%= user.email%></td>
+    
+                                <% if(user.isAccess){ %>
+                                    <th><span class="text-success">Active</span></th>
+                                <% }else{ %>
+                                    <th><span class="text-danger">Blocked</span></th>
+                                <% } %>
+    
+                                <td><a href="/admin/user/edit?id=<%= user._id %>">  <button type="button" class="btn btn-success">Edit</button></a></td>
+                            </tr>
+                        <% }) %>
+                            
+                            
+                    </tbody>
+                </table>
+              </div>
+        
+        </div>
+
+
+          
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.3/axios.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+    
+    <script type="text/javascript" src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap4.min.js"></script>
+    
+    
+    <script>
+        var table = $('#dtBasicExample').DataTable({
+            dom: 'Bfrtip',
+            pageLength: 6,
+        });
+        
+        $('.dataTables_length').addClass('bs-select');
+    </script>
+
+       
+    </div>
+
+    <%- include('./partials/footer.ejs') %>
