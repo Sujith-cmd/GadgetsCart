@@ -79,8 +79,8 @@ const loadLogin = (req, res) => {
 
 const verifyLogin = async (req, res) => {
   try {
-    let PrevUrl = req.query.prevUrl;
-    if (PrevUrl == "") {
+    let PrevUrl = req.query.url;
+    if (!PrevUrl) {
       PrevUrl = "/";
     }
     const { email, password } = req.body;
